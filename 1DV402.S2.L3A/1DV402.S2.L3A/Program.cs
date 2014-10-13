@@ -36,9 +36,9 @@ namespace _1DV402.S2.L3A
             Console.WriteLine(shape.ToString());
             
         }
-   
 
-    private static double ReadDoubleGreaterThanZero(string prompt)
+
+        private static double ReadDoubleGreaterThanZero(string prompt)// här kontrolleras att de in matade värden är större än 0 och inte bokstäver, blir det fel hanteras det här med ett tydligt error meddelande och en ny möjlighet att matta in värden fås 
         {
             double number;
             while (true)
