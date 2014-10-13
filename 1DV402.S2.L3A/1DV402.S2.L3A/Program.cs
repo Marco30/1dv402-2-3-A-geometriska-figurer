@@ -10,7 +10,9 @@ namespace _1DV402.S2.L3A
     {
         static void Main(string[] args)
         {
-              ShapeType shapeType = ShapeType.Rectangle;
+            ViewMenu();
+
+            ShapeType shapeType = ShapeType.Ellipse;
 
             double length = ReadDoubleGreaterThanZero("längd: "); 
 
@@ -18,9 +20,9 @@ namespace _1DV402.S2.L3A
 
             Shape myShape = null;
 
-            if (shapeType == ShapeType.Rectangle)
+            if (shapeType == ShapeType.Ellipse)
             {
-               myShape = new Rectangle(length, width);
+               myShape = new Ellipse(length, width);
                Console.WriteLine();
             }
 
@@ -28,7 +30,7 @@ namespace _1DV402.S2.L3A
 
         }
 
-        private static void ViewShapeDetail(Shape shape)//
+        private static void ViewShapeDetail(Shape shape)//läser ut omkräts och area  
         {
            
             Console.WriteLine(shape.ToString());
@@ -68,7 +70,22 @@ namespace _1DV402.S2.L3A
                 }
 
             }
+
         }
+
+    private static void ViewMenu()//visar texten som blir menyn
+    {
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("-----------------Meny---------------------");
+        Console.WriteLine("------------------------------------------");
+        Console.ResetColor();
+        Console.WriteLine("\n 0. Avsluta");
+        Console.WriteLine("\n 1. Ellips");
+        Console.WriteLine("\n 2. Rektangel");
+        Console.WriteLine("------------------------------------------");
+        Console.Write("\n Ange menyval [0-2]:");
+    }
 
         enum ShapeType
         {
