@@ -68,7 +68,7 @@ namespace _1DV402.S2.L3A
             _width = width;
         }
 
-        public override string ToString() //ersätter existerande toString med en ny streng text    
+        public override string ToString() //gör om alla i variabler till text för att kunna presenteras  
         {
             return string.Format("\nLängd:{0, 14:} \nBredd:{1, 14:} \nOmkrets:{2, 14:.0} \nArea:{3, 14:.0}\n", Length, Width, Perimeter, Area);
         }
