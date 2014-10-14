@@ -10,7 +10,7 @@ namespace _1DV402.S2.L3A
     {
         static void Main(string[] args)
         {
-            bool slut = true; 
+            bool slut = false; 
 
             do
             {
@@ -33,19 +33,20 @@ namespace _1DV402.S2.L3A
                    if(val==0)
                    {
                             Console.WriteLine();
-                            slut = false;
+                            break;
                    }
                     if(val==1)
                    {
                             ViewShapeDetail(CreateShape(ShapeType.Ellipse));
-                            break;
+                        
+                            
                    }
                     if (val == 2)
                    {
                             ViewShapeDetail(CreateShape(ShapeType.Rectangle));
-                            break;
+
                    }
-                            
+
                 }
                 catch
                 {
@@ -54,9 +55,12 @@ namespace _1DV402.S2.L3A
                     Console.ResetColor();
                 }
 
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("tryck på valfri tangent för att fortsätta ");
+                Console.ReadKey();
            
             }
-            while (slut);
+            while (slut == false);
           
 
             
@@ -65,6 +69,7 @@ namespace _1DV402.S2.L3A
 
         private static Shape CreateShape(ShapeType shapeType)
         {
+            Console.WriteLine("du valde:{0}", shapeType);
 
             double length = ReadDoubleGreaterThanZero("längd:");
 
@@ -132,9 +137,9 @@ namespace _1DV402.S2.L3A
     private static void ViewMenu()//visar texten som blir menyn
     {
         Console.BackgroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("------------------------------------------");
-        Console.WriteLine("-----------------Meny---------------------");
-        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("==========================================");
+        Console.WriteLine("==============     Meny     ==============");
+        Console.WriteLine("==========================================");
         Console.ResetColor();
         Console.WriteLine("\n 0. Avsluta");
         Console.WriteLine("\n 1. Ellips");
