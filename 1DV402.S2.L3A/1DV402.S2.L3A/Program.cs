@@ -10,24 +10,80 @@ namespace _1DV402.S2.L3A
     {
         static void Main(string[] args)
         {
-            ViewMenu();
+            bool slut = true; 
 
-            ShapeType shapeType = ShapeType.Ellipse;
+            do
+            {
+                Console.Clear();
+                ViewMenu();
 
-            double length = ReadDoubleGreaterThanZero("längd: "); 
+                string text = Console.ReadLine();
+                
+                int val;
 
-            double width = ReadDoubleGreaterThanZero("bred: ");
+                try
+                {
+                    val = int.Parse(text);
 
-            Shape myShape = null;
+                    if (val < 0 || val > 2)//kontrolerar att man har ett värde mellan 0 - 2, och kastar ett undantag som hanteras i catch
+                    {
+                        throw new ArgumentException();
+                    }
+
+                   if(val==0)
+                   {
+                            Console.WriteLine();
+                            slut = false;
+                   }
+                    if(val==1)
+                   {
+                            ViewShapeDetail(CreateShape(ShapeType.Ellipse));
+                            break;
+                   }
+                    if (val == 2)
+                   {
+                            ViewShapeDetail(CreateShape(ShapeType.Rectangle));
+                            break;
+                   }
+                            
+                }
+                catch
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nERROR!!! mata in nummer mellan 0 -2.\n");
+                    Console.ResetColor();
+                }
+
+           
+            }
+            while (slut);
+          
+
+            
+
+        }
+
+        private static Shape CreateShape(ShapeType shapeType)
+        {
+
+            double length = ReadDoubleGreaterThanZero("längd:");
+
+            double width = ReadDoubleGreaterThanZero("bred:");
+
+            Shape form = null;
 
             if (shapeType == ShapeType.Ellipse)
             {
-               myShape = new Ellipse(length, width);
-               Console.WriteLine();
+                form = new Ellipse(length, width);
+                Console.WriteLine();
+            }
+            if (shapeType == ShapeType.Rectangle)
+            {
+                form = new Rectangle(length, width);
+                Console.WriteLine();
             }
 
-            ViewShapeDetail(myShape);
-
+            return form;
         }
 
         private static void ViewShapeDetail(Shape shape)//läser ut omkräts och area  
