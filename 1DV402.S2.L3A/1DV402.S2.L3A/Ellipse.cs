@@ -9,7 +9,7 @@ namespace _1DV402.S2.L3A
 
     public class Ellipse : Shape
     {
-        
+
         public override double Area
         {
             get
@@ -18,7 +18,7 @@ namespace _1DV402.S2.L3A
             }
         }
 
-   
+
         public override double Perimeter
         {
             get
@@ -28,10 +28,10 @@ namespace _1DV402.S2.L3A
         }
 
         public Ellipse(double length, double width)
-            : base(length, width) 
-        { 
+            : base(length, width)
+        {
         }
 
     }
-   
+
 }

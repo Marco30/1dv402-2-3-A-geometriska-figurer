@@ -11,7 +11,7 @@ namespace _1DV402.S2.L3A
         public override double Area
         {
             get
-            { 
+            {
                 return Length * Width; //räknar ut arean 
             }
         }

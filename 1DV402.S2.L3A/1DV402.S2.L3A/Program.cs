@@ -10,15 +10,13 @@ namespace _1DV402.S2.L3A
     {
         static void Main(string[] args)
         {
-            bool slut = false; 
-
             do // får menyn att lopa tills man väljer 0 = avsluta 
             {
-                Console.Clear();
-                ViewMenu();
+                Console.Clear();//rensar konsol rutan 
+                ViewMenu();// kallar på metoden viewmenu som visar meny texten
 
-                string text = Console.ReadLine();
-                
+                string text = Console.ReadLine();// här mattar man in valet av meny 
+
                 int val;
 
                 try
@@ -30,24 +28,24 @@ namespace _1DV402.S2.L3A
                         throw new ArgumentException();
                     }
 
-                   if(val==0)// välger man o så startas den här if satsen som bryter lopen 
-                   {
-                            Console.WriteLine();
-                            break;
-                   }
-                   if (val == 1)// här körs programmet i alla sina faser med grafiska figuren Ellipse
-                   {
-                       ViewShapeDetail(CreateShape(ShapeType.Ellipse));// här används alla metoderna som skapar programmet, här kallas metoden för inmatning av läng/bred, beräkning av area/omkrets och presentation av area/omkrets
-                            
-                   }
-                   if (val == 2)// här körs programmet i alla sina faser med grafiska figuren Rectangle
-                   {
-                            ViewShapeDetail(CreateShape(ShapeType.Rectangle));
+                    if (val == 0)// välger man o så startas den här if satsen som bryter lopen 
+                    {
+                        Console.WriteLine();
+                        break;
+                    }
+                    if (val == 1)// här körs programmet i alla sina faser med grafiska figuren Ellipse
+                    {
+                        ViewShapeDetail(CreateShape(ShapeType.Ellipse));// här används alla metoderna som skapar programmet, här kallas metoden för inmatning av läng/bred, beräkning av area/omkrets och presentation av area/omkrets
 
-                   }
+                    }
+                    if (val == 2)// här körs programmet i alla sina faser med grafiska figuren Rectangle
+                    {
+                        ViewShapeDetail(CreateShape(ShapeType.Rectangle));
+
+                    }
 
                 }
-                catch// 
+                catch
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nERROR!!! mata in nummer mellan 0 -2.\n");
@@ -58,12 +56,12 @@ namespace _1DV402.S2.L3A
                 Console.WriteLine("tryck på valfri tangent för att fortsätta ");
                 Console.ReadKey();
                 Console.ResetColor();
-           
-            }
-            while (slut == false);
-          
 
-            
+            }
+            while (true);
+
+
+
 
         }
 
@@ -103,7 +101,7 @@ namespace _1DV402.S2.L3A
             Console.WriteLine("==========================================");
             Console.ResetColor();
             Console.WriteLine(shape.ToString());
-            
+
         }
 
 
@@ -113,25 +111,25 @@ namespace _1DV402.S2.L3A
             while (true)
             {
                 Console.WriteLine(prompt);
-                string userInput = Console.ReadLine();
+                string text = Console.ReadLine();
                 try
                 {
-                    number = double.Parse(userInput);
+                    number = double.Parse(text);
 
-                    if (number <= 0)
+                    if (number <= 0) // kontrollerar att det inmatade värdet är större än 0
                     {
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.WriteLine("Error!!! tal ska vara större än 0!");
                         Console.ResetColor();
                     }
                     else
-                    { 
-                        return number; 
+                    {
+                        return number;
                     }
 
                 }
 
-                catch
+                catch//presenterar fel meddelande  om man matar in bokstäver 
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.WriteLine("Error!!!, du matade inte in en siffra, ange en siffra");
@@ -142,23 +140,23 @@ namespace _1DV402.S2.L3A
 
         }
 
-    private static void ViewMenu()//visar texten som blir menyn
-    {
-        Console.BackgroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("==========================================");
-        Console.WriteLine("=          Geometriska Figurer           =");
-        Console.WriteLine("==========================================");
-        Console.ResetColor();
-        Console.WriteLine("\n 0. Avsluta");
-        Console.WriteLine("\n 1. Ellips");
-        Console.WriteLine("\n 2. Rektangel");
-        Console.WriteLine("\n------------------------------------------");
-        Console.Write("\n Ange menyval [0-2]:");
-    }
-
-        enum ShapeType
+        private static void ViewMenu()//visar texten som blir menyn
         {
-            Ellipse, 
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("==========================================");
+            Console.WriteLine("=          Geometriska Figurer           =");
+            Console.WriteLine("==========================================");
+            Console.ResetColor();
+            Console.WriteLine("\n 0. Avsluta");
+            Console.WriteLine("\n 1. Ellips");
+            Console.WriteLine("\n 2. Rektangel");
+            Console.WriteLine("\n------------------------------------------");
+            Console.Write("\n Ange menyval [0-2]:");
+        }
+
+        enum ShapeType// metode som hämtar formler utifrån den respektive Geometriska Figuren man valt.
+        {
+            Ellipse,
             Rectangle,
         }
 
